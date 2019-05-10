@@ -1,0 +1,29 @@
+datafile <- "./data/household_power_consumption.txt"
+data <- read.table(datafile, header =True,sep";" , stringAsfactors= False,dec=",")
+subsetdata <- data[data$Data %in% c ("1/2/2007","2/2/2007")  ,]
+
+#str(subsetdata)
+datetime <-strptime(past(subsetData$Data,SubsetData$Time, sep= " "), "%d/%m/%y %H:%M:%S)
+globalactivepower <- as.numeric(subsetData$Global_active_power)
+globalreactpower,- as.numeric(subsetdata$Global_reactive_power)
+voltage <-as.numeric(subsetdata$voltage)
+submetrings1 <-as.numeric(subsetdata$sub_metrings_1)
+submetrings2 <-as.numeric(subsetdata$sub_metrings_2)
+submetrings3 <-as.numeric(subsetdata$sub_metrings_3)
+
+
+png("plot4.png",width=480,height480")
+par(mfrow = c(2,2)
+
+plot(datetime, globalActivepower,type+"1",xlab="datetime" ,ylab="Global Active Power")
+
+plot(datetime,globalActivePower, type="1", xlab=" ", ylab="voltage")
+
+plot(datetime,submetrings1, type ="1", ylab="Energy Submetring" ,xlab=" ")
+lines(datetime,submetrings2, type="1", col="red")
+lines(datetime,submetrings3,type="3", col="blue")
+legend("topright", c("sub_metrings_1", "sub_metrings_2", "sub_metrings_3"),lty=, 1wd=2.5, col=c("black", "red", "blue") byt=0)
+
+plot(datetime,globalReactivepower,type="1",xlab="datetime", ylab="global_reactive_power")
+
+dev.off()
