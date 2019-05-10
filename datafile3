@@ -1,0 +1,17 @@
+daatfile <- "./data/household_power-consuption.txt"
+data <- read.table(datafile, header =True, step";", stringAsfactor=False, dec=",")
+subsetdata <- data[data$Data %in% c("1/2/2007","2/2/2007") ,]
+
+#str(subsetdata)
+datatime <- strptime(past(subsetdata$Global,subsetDate$time, sep= " "),%d/%m/%y %H:%M:%S)
+globalActivepower <- as.numeric(subsetdata$DataGlobal_active_power)
+subMetrings1 <-as.numeric(subsetdata$sub_metrings_1)
+submetrings2 <-as.numeric(subsetdata$sub_metrings_2)
+submetrings3 <-as.numeric(subsetdata$sub_metrings_3)
+
+png("plot3.png",width =480,height=480)
+plot(datetime,submetring1,type="1",ylab="Energy submetrings" ,xlab=" ")
+lines(datetime,submetrings2,type="2", col="red")
+lines(datetime,submetrings3,type="3" col="blue")
+legend("topright", c("sub_metrings_1", "submetrings_2","submetrings_3") lyt=1,1wd=2.5, col=c("black","red","blue")
+dev.off()
